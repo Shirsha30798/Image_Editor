@@ -1,0 +1,124 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<BorderPane fx:id="root" fx:controller="sample.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <left>
+        <VBox prefHeight="200.0" prefWidth="170.0" style="-fx-background-color: #303030;" BorderPane.alignment="CENTER">
+            <ToolBar orientation="VERTICAL" prefHeight="354.0" prefWidth="170.0" style="-fx-background-color: #303030;"
+                     VBox.vgrow="ALWAYS">
+                <Label text="Brightness" style="-fx-text-fill: #ffff;">
+                    <padding>
+                        <Insets left="3.0" top="10.0"/>
+                    </padding>
+                </Label>
+                <Slider fx:id="brightnessSlider" prefHeight="40.0" prefWidth="150.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #ffff;"
+                        min="-0.9" max="0.9" snapToTicks="true" showTickMarks="true" majorTickUnit="0.1"/>
+                <Label text="Saturation" style="-fx-text-fill: #ffff;">
+                    <padding>
+                        <Insets left="3.0"/>
+                    </padding>
+                </Label>
+                <Slider fx:id="saturationSlider" prefHeight="40.0" prefWidth="150.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #ffff;"
+                        min="-0.9" max="0.9" snapToTicks="true" showTickMarks="true" majorTickUnit="0.1"/>
+                <Label text="Contrast" style="-fx-text-fill: #ffff;">
+                    <padding>
+                        <Insets left="3.0"/>
+                    </padding>
+                </Label>
+                <Slider fx:id="contrastSlider" prefHeight="40.0" prefWidth="150.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #ffff;"
+                        min="-0.9" max="0.9" snapToTicks="true" showTickMarks="true" majorTickUnit="0.1"/>
+                <Label text="Hue" style="-fx-text-fill: #ffff;">
+                    <padding>
+                        <Insets left="3.0"/>
+                    </padding>
+                </Label>
+                <Slider fx:id="hueSlider" prefHeight="40.0" prefWidth="150.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #ffff;"
+                        min="-0.9" max="0.9" snapToTicks="true" showTickMarks="true" majorTickUnit="0.1"/>
+                <Button fx:id="undoButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0"
+                         text="Undo"
+                        onAction="#undoColorAdjustment"/>
+                <Button fx:id="redoButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0"
+                         text="Redo"
+                        onAction="#redoColorAdjustment"/>
+                <ToggleButton fx:id="toggleCrop" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0"
+                              text="Crop"/>
+            </ToolBar>
+        </VBox>
+    </left>
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <Menu mnemonicParsing="false" text="File">
+                <MenuItem mnemonicParsing="false" text="Open" onAction="#openImage"/>
+                <MenuItem mnemonicParsing="false" text="Save" onAction="#saveImage"/>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+                <MenuItem mnemonicParsing="false" text="Delete"/>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+                <MenuItem mnemonicParsing="false" text="About"/>
+            </Menu>
+        </MenuBar>
+    </top>
+    <center>
+        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0"
+                    BorderPane.alignment="CENTER">
+            <padding>
+                <Insets right="10.0"/>
+            </padding>
+            <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="200.0">
+                <Group fx:id="imageLayer">
+                    <ImageView fx:id="imageView" cache="true" pickOnBounds="true" preserveRatio="true"
+                    />
+                </Group>
+            </StackPane>
+        </ScrollPane>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER"
+              style="-fx-border-color : #404040; -fx-background-color : #C0C0C0">
+            <padding>
+                <Insets right="10.0"/>
+            </padding>
+            <Label text="Zoom :">
+                <padding>
+                    <Insets bottom="7.0" right="10.0"/>
+                </padding>
+            </Label>
+            <Slider fx:id="scaleSlider" style="-fx-background-color : transparent;" blockIncrement="0.0"
+                    minorTickCount="1" prefHeight="26.0" prefWidth="170.0" showTickMarks="true" snapToTicks="true">
+                <opaqueInsets>
+                    <Insets/>
+                </opaqueInsets>
+                <padding>
+                    <Insets left="2.0" right="2.0" top="2.0"/>
+                </padding>
+            </Slider>
+        </HBox>
+    </bottom>
+</BorderPane>
